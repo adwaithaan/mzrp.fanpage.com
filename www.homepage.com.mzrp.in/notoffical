@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MZRP Fan Page</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e1e, #3d3d3d);
+      color: white;
+      text-align: center;
+    }
+
+    /* Header styling */
+    header {
+      background-color: #FF9E3D;
+      padding: 20px;
+      display: flex;
+      justify-content: center; /* centers the logo */
+      align-items: center;     /* vertically centers */
+      flex-wrap: wrap;         /* allows wrapping for very small screens */
+    }
+
+    /* Logo image responsive */
+    header .banner {
+      width: 500px;    /* default for laptops */
+      max-width: 100%; /* prevents overflow on smaller screens */
+      height: auto;    /* maintains aspect ratio */
+    }
+
+    section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h2 { color: #ff6600; margin-bottom: 10px; }
+    ul { list-style: none; padding: 0; }
+    ul li {
+      background: #2a2a2a;
+      margin: 8px 0;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    .btn {
+      background: #ff6600;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+      margin-top: 10px;
+    }
+    .btn:hover { background: #ff3300; }
+
+    footer {
+      background: #111;
+      padding: 10px;
+      margin-top: 30px;
+      font-size: 0.9em;
+    }
+
+    /* Cards */
+    .youtubers {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 15px;
+    }
+    .card {
+      background: #2a2a2a;
+      width: 150px;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: 0.3s;
+    }
+    .card:hover { transform: scale(1.05); }
+    .card img { width: 100%; height: 150px; object-fit: cover; }
+    .card p { padding: 10px; font-size: 0.9em; color: #ffcc66; }
+
+    .features { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .feature {
+      background: #2a2a2a;
+      padding: 15px;
+      border-radius: 10px;
+      width: 250px;
+      text-align: left;
+    }
+    .feature h3 { color: #ff9933; margin-bottom: 8px; }
+    .feature p { font-size: 0.95em; }
+    a { color: #ffcc66; text-decoration: none; }
+    a:hover { color: #ff9933; }
+
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      max-width: 600px;
+      margin: 20px auto;
+      text-align: left;
+    }
+    .season {
+      background: #2a2a2a;
+      border-left: 5px solid #ff6600;
+      padding: 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .season:hover { background: #3d3d3d; }
+    .season h3 { margin: 0; color: #ffcc66; }
+    .season-details { display: none; margin-top: 10px; }
+    .season-details a {
+      display: inline-block;
+      margin-top: 5px;
+      padding: 8px 12px;
+      background: #ff6600;
+      color: white;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .season-details a:hover { background: #ff3300; }
+
+    ::selection { background: #ff6600; color: white; }
+    html { scroll-behavior: smooth; }
+
+    nav {
+      background: #ff6600;
+      padding:10px;
+      position:sticky; 
+      top:0; 
+      z-index:1000;
+    }
+    nav a { margin: 0 10px; color: white; text-decoration: none; }
+    nav a:hover { text-decoration: underline; }
+
+    .location-info {
+      font-size: 14px;
+      color: #ddd;
+      margin-top: -10px;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .location-info a {
+      color: #ff6f61;
+      text-decoration: underline;
+    }
+
+    /* Big-page form styles */
+    .big-form {
+      background: linear-gradient(to right, #1e1e1e, #333);
+      color: #fff;
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: 50px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 40px rgba(0,0,0,0.7);
+      position: relative;
+    }
+    .big-form h2 {
+      font-size: 36px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .big-form p { text-align: center; margin-bottom: 30px; font-size: 18px; }
+    .big-form label { font-size: 16px; margin-bottom: 5px; display: block; }
+    .big-form input,
+    .big-form textarea,
+    .big-form select {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      box-sizing: border-box;
+      background: #2a2a2a;
+      color: #fff;
+    }
+    .big-form input:focus,
+    .big-form textarea:focus,
+    .big-form select:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ff6f61;
+    }
+    .big-form .btn {
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      background: #ff6f61;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .big-form .btn:hover { background: #ff3b2e; }
+
+    /* Confirmation popup inside the form */
+    .confirmation-popup {
+      display: none;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #222;
+      padding: 30px 20px;
+      border-radius: 15px;
+      text-align: center;
+      width: 80%;
+      max-width: 400px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.8);
+    }
+    .confirmation-popup h3 { margin-bottom: 10px; color: #4caf50; }
+    .confirmation-popup p { margin-bottom: 20px; }
+
+    /* Forbidden word popup */
+    .forbidden-popup {
+      display: none;
+      position: fixed;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      background: #ff4d4d;
+      color: #fff;
+      padding: 20px 30px;
+      border-radius: 10px;
+      text-align: center;
+      z-index: 9999;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+    }
+    .forbidden-popup button {
+      margin-top: 10px;
+      padding: 5px 15px;
+      background: #fff;
+      color: #ff4d4d;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* Disclaimer Section */
+    .disclaimer {
+      padding: 20px; 
+      background-color: #f8f8f8; 
+      border-radius: 10px; 
+      margin-top: 20px;
+      color: #555;
+      line-height: 1.6;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .disclaimer h2 { color: #333; font-size: 1.5em; }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#about">What is MZRP?</a>
+  <a href="#unique">Features</a>
+  <a href="#youtubers">YouTubers</a>
+  <a href="#seasons">Seasons</a>
+  <a href="#quiz">Fan Quiz</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<header>
+  <img src="mzrp2.png" alt="MZRP Season 03" class="banner"/>
+</header>
+
+<section id="about">
+  <p>Welcome to the ultimate fan page for <strong>MZRP</strong>! 🎮<br>
+  Dive into the world of Minecraft roleplay and troll adventures inspired by the creators of MZRP.</p>
+</section>
+
+<section id="unique">
+  <h2>What Makes MZRP Unique?</h2>
+  <div class="features">
+    <div class="feature"><h3>🌍 Immersive World</h3><p>Massive custom-built cities and maps built by Kerala creators.</p></div>
+    <div class="feature"><h3>🎭 Epic Roleplay</h3><p>Roleplay stories mixed with hilarious troll moments.</p></div>
+    <div class="feature"><h3>🎥 Talented Creators</h3><p>YouTubers bring characters to life with humor and storytelling.</p></div>
+    <div class="feature"><h3>🔥 Community Vibes</h3><p>A server with Kerala language, humor, and creativity.</p></div>
+  </div>
+</section>
+
+<section id="youtubers">
+  <h2>YouTube Channels Featuring MZRP</h2>
+  <div class="youtubers">
+    <!-- cards go here -->
+  </div>
+</section>
+
+<section id="seasons">
+  <h2>MZRP Seasons Timeline</h2>
+  <div class="timeline">
+    <div class="season" onclick="toggleSeason('s1')">
+      <h3>Season 1</h3>
+      <div id="s1" class="season-details"><p>Started 2021-2022</p></div>
+    </div>
+    <div class="season" onclick="toggleSeason('s2')">
+      <h3>Season 2</h3>
+      <div id="s2" class="season-details"><p>Started 2022-2023</p></div>
+    </div>
+    <div class="season" onclick="toggleSeason('s3')">
+      <h3>Season 3 (Now Running!)</h3>
+      <div id="s3" class="season-details"><p>Started 2025</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="edit-info" class="big-form">
+  <h2>Need to improve or correct any information?</h2>
+  <p>Help us improve and correct spelling mistakes, YouTubers name, image or link changing!</p>
+
+  <form id="infoForm">
+    <label>Name:</label>
+    <input type="text" id="name" placeholder="Your name">
+
+    <label>Email:</label>
+    <input type="email" id="email" placeholder="Your email">
+
+    <label>Your Request:</label>
+    <textarea id="message" placeholder="Type your request"></textarea>
+
+    <label>Select your district:</label>
+    <select id="place">
+      <option value="">-- Select district --</option>
+      <option value="ernakulam">Ernakulam (Kochi)</option>
+      <option value="thiruvananthapuram">Thiruvananthapuram (Trivandrum)</option>
+      <option value="palakkad">Palakkad</option>
+      <option value="kollam">Kollam</option>
+      <option value="kannur">Kannur</option>
+      <option value="kasaragod">Kasaragod</option>
+      <option value="wayanad">Wayanad (Munnar)</option>
+      <option value="idukki">Idukki</option>
+      <option value="pathanamthitta">Pathanamthitta</option>
+      <option value="kozhikode">Kozhikode (Calicut)</option>
+      <option value="alappuzha">Alappuzha</option>
+      <option value="kottayam">Kottayam</option>
+      <option value="malappuram">Malappuram</option>
+      <option value="thrissur">Thrissur</option>
+      <option value="ut">UT (Union Territories)</option>
+      <option value="other">Other state / city</option>
+    </select>
+    <p class="location-info">
+  ***Location OR place is requested only for best voting experience to improve or voting and improvement!  
+  IF YOU THINK WE ARE USING YOUR LOCATION FOR OTHER USE, PLEASE COMPLAIN TO:  
+  <a href="https://cybercrime.gov.in/" target="_blank">https://cybercrime.gov.in/offical</a>
+</p>
+
+    <button type="submit" class="btn">Submit</button>
+  </form>
+
+  <!-- Confirmation popup -->
+  <div id="confirmation" class="confirmation-popup">
+    <h3>✅ Your request has been sent!</h3>
+    <p>We will check through it soon and make it work out!</p>
+    <button class="btn" onclick="closeConfirmation()">OK</button>
+  </div>
+
+  <!-- Forbidden word live popup -->
+  <div id="forbiddenPopup" class="forbidden-popup">
+    ⚠️ WARNING:
+    <p>your request has some kind of language or word that dosent follow: <br /><a href="#">our community guidelines, rules and regulations OR words that influence our employees to distract!</a></p>
+    <button onclick="closeForbiddenPopup()">OK</button>
+  </div>
+</section>
+
+<section class="disclaimer">
+  <h2>Disclaimer</h2>
+  <p>
+    All details, images, links, and photos on this page are sourced from public platforms such as YouTube and other publicly available services. This website is <strong>not an official website</strong> of any organization, company, or individual mentioned here.
+  </p>
+</section>
+
+<footer>Made with love by: MZRP FANZ💝 | Not an official server page...</footer>
+
+<script>
+function toggleSeason(id) {
+  const section = document.getElementById(id);
+  section.style.display = section.style.display === "block" ? "none" : "block";
+}
+
+// Forbidden words list
+const forbiddenWords = ["idiot", "stupid", "dumb", "hate", "shit", "wtf", "fuck", "porn", "sex", "f u c k", "p o r n", "s h i t", "d u m b", "h a t e", "s t u p i d", "i d i o t"];
+const messageInput = document.getElementById("message");
+
+// Live check as user types
+messageInput.addEventListener("input", function() {
+  const text = messageInput.value.toLowerCase();
+  for (let word of forbiddenWords) {
+    if (text.includes(word)) {
+      showForbiddenPopup();
+      return; 
+    }
+  }
+});
+
+function showForbiddenPopup() {
+  document.getElementById("forbiddenPopup").style.display = "block";
+}
+
+function closeForbiddenPopup() {
+  document.getElementById("forbiddenPopup").style.display = "none";
+  messageInput.value = ""; 
+}
+
+// Form submission
+document.getElementById("infoForm").addEventListener("submit", function(e) {
+  e.preventDefault(); 
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const place = document.getElementById("place").value;
+
+  if (!name || !email || !message || !place) {
+    alert("Please fill all fields before submitting.");
+    return;
+  }
+
+  const lowerMessage = message.toLowerCase();
+  for (let word of forbiddenWords) {
+    if (lowerMessage.includes(word)) {
+      showForbiddenPopup();
+      return;
+    }
+  }
+
+  document.getElementById("confirmation").style.display = "block";
+  document.getElementById("infoForm").reset();
+});
+
+function closeConfirmation() {
+  document.getElementById("confirmation").style.display = "none";
+}
+</script>
+
+</body>
+</html>
